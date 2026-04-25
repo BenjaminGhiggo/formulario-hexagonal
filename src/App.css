@@ -1,0 +1,352 @@
+/* Layout */
+.layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.layout.sidebar-open .app {
+  margin-left: 260px;
+}
+
+.app {
+  max-width: 900px;
+  margin: 0 auto;
+  flex: 1;
+  padding: 0 1rem;
+}
+
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 250px;
+  height: 100vh;
+  background: #161b22;
+  border-right: 1px solid #30363d;
+  overflow-y: auto;
+  padding: 1rem 0;
+  z-index: 10;
+}
+
+.sidebar-title {
+  color: #58a6ff;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.5rem 1rem 0.75rem;
+  border-bottom: 1px solid #30363d;
+  margin-bottom: 0.5rem;
+}
+
+/* Language selector */
+.lang-selector {
+  padding: 0.6rem 0.75rem;
+  border-bottom: 1px solid #30363d;
+  margin-bottom: 0.5rem;
+}
+
+.lang-selector-label {
+  color: #8b949e;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.4rem;
+}
+
+.lang-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+}
+
+.lang-btn {
+  background: #0d1117;
+  border: 1px solid #30363d;
+  color: #8b949e;
+  font-size: 0.68rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.15s;
+}
+
+.lang-btn:hover {
+  background: #1c2128;
+  color: #f0f6fc;
+  border-color: #484f58;
+}
+
+.lang-btn.active {
+  background: #58a6ff;
+  color: #0d1117;
+  border-color: #58a6ff;
+  font-weight: 600;
+}
+
+/* Section lang badge */
+.section-lang-badge {
+  font-size: 0.65rem;
+  background: #30363d;
+  color: #8b949e;
+  padding: 0.15rem 0.45rem;
+  border-radius: 3px;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.sidebar-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  font-size: 0.78rem;
+  color: #8b949e;
+  transition: background 0.15s, color 0.15s;
+  border-left: 3px solid transparent;
+}
+
+.sidebar-item:hover {
+  background: #1c2128;
+  color: #f0f6fc;
+}
+
+.sidebar-item.active {
+  background: #1c2128;
+  color: #58a6ff;
+  border-left-color: #58a6ff;
+}
+
+.sidebar-num {
+  background: #30363d;
+  color: #8b949e;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.sidebar-item.active .sidebar-num {
+  background: #58a6ff;
+  color: #0d1117;
+}
+
+.sidebar-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Toggle button */
+.sidebar-toggle-btn {
+  position: fixed;
+  top: 0.75rem;
+  left: 0.5rem;
+  z-index: 20;
+  background: #161b22;
+  border: 1px solid #30363d;
+  color: #8b949e;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 6px;
+  font-size: 1.3rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  transition: background 0.15s;
+}
+
+.sidebar-toggle-btn:hover {
+  background: #22272e;
+  color: #f0f6fc;
+}
+
+.layout.sidebar-open .sidebar-toggle-btn {
+  left: 255px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 220px;
+  }
+  .layout.sidebar-open .app {
+    margin-left: 230px;
+  }
+  .layout.sidebar-open .sidebar-toggle-btn {
+    left: 225px;
+  }
+}
+
+.app-title {
+  text-align: center;
+  font-size: 1.6rem;
+  color: #58a6ff;
+  margin-bottom: 0.5rem;
+}
+
+.app-subtitle {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #8b949e;
+  margin-bottom: 2rem;
+}
+
+.section {
+  background: #161b22;
+  border: 1px solid #30363d;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  overflow: hidden;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  background: #1c2128;
+  border-bottom: 1px solid #30363d;
+  cursor: pointer;
+  user-select: none;
+}
+
+.section-header:hover {
+  background: #22272e;
+}
+
+.section-number {
+  background: #58a6ff;
+  color: #0d1117;
+  font-weight: 700;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+
+.section-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #f0f6fc;
+}
+
+.section-toggle {
+  color: #8b949e;
+  font-size: 1.2rem;
+  transition: transform 0.2s;
+}
+
+.section-toggle.open {
+  transform: rotate(90deg);
+}
+
+.section-body {
+  padding: 1rem;
+}
+
+.formula {
+  background: #0d1117;
+  border: 1px solid #30363d;
+  border-radius: 6px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.75rem;
+  font-size: 0.9rem;
+  color: #c9d1d9;
+  overflow-x: auto;
+  white-space: pre-wrap;
+}
+
+.formula-label {
+  color: #8b949e;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.25rem;
+}
+
+.meaning {
+  font-size: 0.85rem;
+  color: #8b949e;
+  margin-bottom: 0.75rem;
+  padding-left: 1rem;
+}
+
+.meaning span {
+  color: #79c0ff;
+}
+
+.code-block {
+  background: #0d1117;
+  border: 1px solid #30363d;
+  border-radius: 6px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.75rem;
+  overflow-x: auto;
+  font-size: 0.82rem;
+  line-height: 1.5;
+  white-space: pre;
+}
+
+/* Syntax highlighting — code (GitHub Dark theme) */
+.hl-kw   { color: #ff7b72; }                        /* keywords */
+.hl-str  { color: #a5d6ff; }                        /* strings */
+.hl-cmt  { color: #8b949e; font-style: italic; }    /* comments */
+.hl-var  { color: #ffa657; }                        /* variables ($x) */
+.hl-num  { color: #79c0ff; }                        /* numbers */
+.hl-type { color: #f0883e; }                        /* types / class names */
+.hl-fn   { color: #d2a8ff; }                        /* function names */
+.hl-dec  { color: #d2a8ff; font-style: italic; }    /* decorators (@) */
+
+/* Syntax highlighting — formulas */
+.fm-op    { color: #ff7b72; font-weight: 600; }     /* :=  ->  <-  forall */
+.fm-set   { color: #79c0ff; font-weight: 700; }     /* Z, S, O (math sets) */
+.fm-type  { color: #f0883e; font-weight: 600; }     /* Type names */
+.fm-var   { color: #7ee787; }                        /* lowercase vars */
+.fm-num   { color: #79c0ff; }                        /* numbers */
+.fm-kw    { color: #ff7b72; font-style: italic; }   /* con, en, void */
+.fm-brace { color: #d2a8ff; }                        /* () {} [] */
+.fm-punct { color: #8b949e; }                        /* : , . */
+
+.output {
+  background: #1a1e24;
+  border-left: 3px solid #3fb950;
+  border-radius: 0 6px 6px 0;
+  padding: 0.5rem 1rem;
+  font-size: 0.85rem;
+  color: #3fb950;
+}
+
+.output-label {
+  color: #8b949e;
+  font-size: 0.75rem;
+  margin-bottom: 0.25rem;
+}
+
+.footer {
+  text-align: center;
+  padding: 1.5rem;
+  color: #3fb950;
+  font-size: 1rem;
+  font-weight: 600;
+}
