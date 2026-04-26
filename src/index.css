@@ -13,5 +13,48 @@
 
 body {
   min-width: 320px;
-  padding: 2rem 1rem;
+  padding-top: 3.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-bottom: 2rem;
+}
+
+/* Header navigation */
+.main-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3rem;
+  background: #161b22;
+  border-bottom: 1px solid #30363d;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main-nav {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.nav-link {
+  color: #8b949e;
+  text-decoration: none;
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 0.4rem 1.2rem;
+  border-radius: 6px;
+  transition: all 0.15s;
+}
+
+.nav-link:hover {
+  color: #f0f6fc;
+  background: #22272e;
+}
+
+.nav-link.active {
+  color: #58a6ff;
+  background: #0d1117;
 }

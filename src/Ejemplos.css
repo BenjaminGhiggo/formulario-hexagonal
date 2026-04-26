@@ -1,0 +1,165 @@
+/* Language bar */
+.ej-lang-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 1.5rem;
+  justify-content: center;
+}
+
+.ej-lang-btn {
+  background: #0d1117;
+  border: 1px solid #30363d;
+  color: #8b949e;
+  font-size: 0.78rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.15s;
+}
+
+.ej-lang-btn:hover {
+  background: #1c2128;
+  color: #f0f6fc;
+}
+
+.ej-lang-btn.active {
+  background: #58a6ff;
+  color: #0d1117;
+  border-color: #58a6ff;
+  font-weight: 600;
+}
+
+/* Section group */
+.ej-section {
+  margin-bottom: 2rem;
+}
+
+.ej-section-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #58a6ff;
+}
+
+.ej-section-num {
+  background: #58a6ff;
+  color: #0d1117;
+  font-weight: 700;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+
+.ej-section-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #f0f6fc;
+}
+
+/* Example card */
+.ej-card {
+  background: #161b22;
+  border: 1px solid #30363d;
+  border-radius: 8px;
+  margin-bottom: 0.75rem;
+  overflow: hidden;
+}
+
+.ej-enunciado {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.65rem 1rem;
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.15s;
+}
+
+.ej-enunciado:hover {
+  background: #1c2128;
+}
+
+.ej-badge {
+  background: #30363d;
+  color: #58a6ff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.ej-enunciado-text {
+  font-size: 0.85rem;
+  color: #c9d1d9;
+  line-height: 1.4;
+}
+
+.ej-toggle {
+  margin-left: auto;
+  color: #8b949e;
+  font-size: 1rem;
+  transition: transform 0.2s;
+  flex-shrink: 0;
+}
+
+.ej-toggle.open {
+  transform: rotate(90deg);
+}
+
+/* Solution area */
+.ej-solucion {
+  padding: 0.75rem 1rem;
+  border-top: 1px solid #30363d;
+  background: #0d1117;
+}
+
+.ej-solucion-label {
+  color: #8b949e;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.4rem;
+}
+
+.ej-output-label {
+  color: #8b949e;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+}
+
+.ej-output {
+  background: #1a1e24;
+  border-left: 3px solid #3fb950;
+  border-radius: 0 6px 6px 0;
+  padding: 0.5rem 1rem;
+  font-size: 0.85rem;
+  color: #3fb950;
+}
+
+/* Sidebar reuses .sidebar-* classes from App.css */
+.ej-sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 250px;
+  height: 100vh;
+  background: #161b22;
+  border-right: 1px solid #30363d;
+  overflow-y: auto;
+  padding: 1rem 0;
+  z-index: 10;
+  padding-top: 3.5rem;
+}
