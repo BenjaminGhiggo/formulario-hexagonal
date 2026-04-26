@@ -65,9 +65,10 @@ function Section({ data, sectionRef, lang }) {
           <HighlightedCode code={data.code[lang]} lang={lang} />
           <div className="output-label">Salida</div>
           <div className="output">
-            {data.output.split('\n').map((line, i) => (
-              <div key={i}>{line}</div>
-            ))}
+            {(typeof data.output === 'string' ? data.output : data.output[lang])
+              .split('\n').map((line, i) => (
+                <div key={i}>{line}</div>
+              ))}
           </div>
         </div>
       )}

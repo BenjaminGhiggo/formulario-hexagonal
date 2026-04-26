@@ -28,9 +28,10 @@ function ExampleCard({ ex, lang }) {
           <HighlightedCode code={ex.code[lang]} lang={lang} />
           <div className="ej-output-label">Salida</div>
           <div className="ej-output">
-            {ex.output.split('\n').map((line, i) => (
-              <div key={i}>{line}</div>
-            ))}
+            {(typeof ex.output === 'string' ? ex.output : ex.output[lang])
+              .split('\n').map((line, i) => (
+                <div key={i}>{line}</div>
+              ))}
           </div>
         </div>
       )}

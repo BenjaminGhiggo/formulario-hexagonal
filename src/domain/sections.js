@@ -17,7 +17,8 @@ const sections = [
     formula: 'A := (x: Z) -> { f: Z -> Z | f(x) = 2x }',
     meaning: 'A = clase concreta, x = atributo entero (estado), f = metodo que duplica x',
     code: {
-      php: `class A {
+      php: `<?php
+class A {
     public function __construct(public int $x) {}
     public function f(): int { return $this->x * 2; }
 }
@@ -66,7 +67,14 @@ System.out.println("a.f() = " + a.f());`,
 var a = new A(5);
 Console.WriteLine($"a.F() = {a.F()}");`,
     },
-    output: 'a.f() = 10',
+    output: {
+      php: 'a->f() = 10',
+      python: 'a.f() = 10',
+      javascript: 'a.f() = 10',
+      typescript: 'a.f() = 10',
+      java: 'a.f() = 10',
+      csharp: 'a.F() = 10',
+    },
   },
 
   // ---- 2. INTERFAZ ----
@@ -76,7 +84,8 @@ Console.WriteLine($"a.F() = {a.F()}");`,
     formula: 'P := { m: Z -> S }',
     meaning: 'P = interfaz (puerto), m = metodo abstracto, Z = entero, S = string',
     code: {
-      php: `interface P {
+      php: `<?php
+interface P {
     public function m(int $a): string;
 }`,
       python: `from abc import ABC, abstractmethod
@@ -107,7 +116,8 @@ class P(ABC):
     formula: 'Q, R : P  |  usar(P, x) -> p.m(x)',
     meaning: 'Q, R = implementaciones concretas de P; usar = funcion polimorfica',
     code: {
-      php: `class Q implements P {
+      php: `<?php
+class Q implements P {
     public function m(int $a): string { return "Q: $a"; }
 }
 class R implements P {
@@ -185,7 +195,8 @@ Console.WriteLine(Usar(new R(), 3));`,
     formula: 'S = (p: P) -> hacer(x: Z): S = p.m(x)',
     meaning: 'S = modulo de alto nivel, p = dependencia abstracta (P)',
     code: {
-      php: `class S {
+      php: `<?php
+class S {
     public function __construct(private P $p) {}
     public function hacer(int $x): string {
         return $this->p->m($x);
@@ -244,7 +255,8 @@ Console.WriteLine(servicio.Hacer(7));`,
     formula: 'forall Q,R : P . (forall S con P) . S(Q) === S(R) en comportamiento',
     meaning: 'Q y R son intercambiables donde se espere P, sin romper S',
     code: {
-      php: `function procesar(P $p, int $v): string {
+      php: `<?php
+function procesar(P $p, int $v): string {
     return (new S($p))->hacer($v);
 }
 echo procesar(new Q(), 4);
@@ -285,7 +297,8 @@ Console.WriteLine(Procesar(new R(), 4));`,
     formula: 'L: Z -> S (otro); Adaptador: P con m(a) = L.otro(a)',
     meaning: 'L = libreria externa con interfaz incompatible, Adaptador = convierte L en P',
     code: {
-      php: `class L {
+      php: `<?php
+class L {
     public function otro(int $b): string {
         return "[ext] " . ($b + 100);
     }
@@ -359,7 +372,8 @@ Console.WriteLine(adapter.M(5));`,
     formula: 'T := (dep: P) -> ejecutar(x) = dep.m(x)',
     meaning: 'T = clase cualquiera, dep = dependencia inyectada desde fuera',
     code: {
-      php: `class T {
+      php: `<?php
+class T {
     public function __construct(private P $dep) {}
     public function ejecutar(int $x): string {
         return $this->dep->m($x);
@@ -414,7 +428,8 @@ Console.WriteLine(inyectado.Ejecutar(10));`,
     formula: 'Mock := { m(x) |-> valor_fijo }',
     meaning: 'Mock = objeto que implementa P con comportamiento programable (sustituto controlable)',
     code: {
-      php: `class MockP implements P {
+      php: `<?php
+class MockP implements P {
     private string $return;
     public function setReturn(string $s): void {
         $this->return = $s;
@@ -485,7 +500,8 @@ Console.WriteLine(sMock.Hacer(999));`,
     formula: 'Repo := { get(id: Z) -> O, put(id: Z, obj: O) -> void }',
     meaning: 'Repo = contrato de repositorio, id = clave entera, O = objeto generico',
     code: {
-      php: `interface Repo {
+      php: `<?php
+interface Repo {
     public function get(int $id): object;
     public function put(int $id, object $obj): void;
 }
@@ -565,7 +581,14 @@ var repo = new RepoMem();
 repo.Put(1, new object());
 Console.WriteLine(repo.Get(1).GetType().Name);`,
     },
-    output: 'Repo guarda stdClass: stdClass',
+    output: {
+      php: 'stdClass',
+      python: 'object',
+      javascript: 'object',
+      typescript: 'object',
+      java: 'Object',
+      csharp: 'Object',
+    },
   },
 
   // ---- 10. ENTIDAD vs VALUE OBJECT ----
@@ -575,7 +598,8 @@ Console.WriteLine(repo.Get(1).GetType().Name);`,
     formula: 'Ent tiene id (identidad)  |  Val = { x,y } con igualdad estructural',
     meaning: 'Ent = entidad (identidad propia), Val = objeto valor (compara por contenido)',
     code: {
-      php: `class Ent {
+      php: `<?php
+class Ent {
     public function __construct(
         public int $id, public int $x
     ) {}
@@ -674,7 +698,8 @@ Console.WriteLine($"v1 == v2 ? {(v1 == v2 ? "SI" : "NO")}");`,
     formula: 'M (componente), C := { m: M } -> f() = m.ejec()',
     meaning: 'M = componente interno, C = clase que compone M (no hereda)',
     code: {
-      php: `class M {
+      php: `<?php
+class M {
     public function ejec(): int { return 42; }
 }
 class C {
@@ -736,7 +761,14 @@ class C {
 var comp = new C(new M());
 Console.WriteLine($"comp.F() = {comp.F()}");`,
     },
-    output: 'comp.f() = 42',
+    output: {
+      php: 'comp->f() = 42',
+      python: 'comp.f() = 42',
+      javascript: 'comp.f() = 42',
+      typescript: 'comp.f() = 42',
+      java: 'comp.f() = 42',
+      csharp: 'comp.F() = 42',
+    },
   },
 
   // ---- 12. HEXAGONO ----
@@ -746,7 +778,8 @@ Console.WriteLine($"comp.F() = {comp.F()}");`,
     formula: 'Dominio -> Puerto <- AdaptadorConcreto\nPuerto(op: Z->Z), Dominio.algo(v) = 2 * puerto.op(v)',
     meaning: 'Dominio = logica de negocio, Puerto = abstraccion, Adaptador = implementacion',
     code: {
-      php: `interface Puerto {
+      php: `<?php
+interface Puerto {
     public function op(int $x): int;
 }
 class AdaptadorHex implements Puerto {
@@ -828,7 +861,14 @@ class Dominio {
 var hex = new Dominio(new AdaptadorHex());
 Console.WriteLine($"dominio.Algo(5) = {hex.Algo(5)}");`,
     },
-    output: 'dominio.algo(5) = 210  // (5+100)*2',
+    output: {
+      php: 'dominio.algo(5) = 210',
+      python: 'dominio.algo(5) = 210',
+      javascript: 'dominio.algo(5) = 210',
+      typescript: 'dominio.algo(5) = 210',
+      java: 'dominio.algo(5) = 210',
+      csharp: 'dominio.Algo(5) = 210',
+    },
   },
 ]
 

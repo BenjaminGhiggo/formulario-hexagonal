@@ -8,7 +8,8 @@ export const examples1 = [
     id: '1a',
     enunciado: 'Crea un objeto que guarde un numero y devuelva su doble.',
     code: {
-      php: `class Doble {
+      php: `<?php
+class Doble {
     public function __construct(private int $x) {}
     public function resultado(): int {
         return $this->x * 2;
@@ -59,7 +60,8 @@ Console.WriteLine(d.Resultado());`,
     id: '1b',
     enunciado: 'Crea un objeto que guarde dos numeros y devuelva su suma.',
     code: {
-      php: `class Suma {
+      php: `<?php
+class Suma {
     public function __construct(
         private int $a,
         private int $b
@@ -114,7 +116,8 @@ Console.WriteLine(s.Resultado());`,
     id: '1c',
     enunciado: 'Crea un objeto que guarde un numero y diga si es par o impar.',
     code: {
-      php: `class ParImpar {
+      php: `<?php
+class ParImpar {
     public function __construct(private int $n) {}
     public function esPar(): bool {
         return $this->n % 2 === 0;
@@ -167,7 +170,8 @@ Console.WriteLine(p.EsPar() ? "par" : "impar");`,
     id: '2a',
     enunciado: 'Define un contrato: toda operacion recibe un entero y devuelve un entero.',
     code: {
-      php: `interface Operacion {
+      php: `<?php
+interface Operacion {
     public function aplicar(int $n): int;
 }
 // Cualquier clase que implemente Operacion
@@ -208,7 +212,8 @@ class Operacion(ABC):
     id: '2b',
     enunciado: 'Define un contrato para comparar: recibe dos enteros, devuelve bool.',
     code: {
-      php: `interface Comparador {
+      php: `<?php
+interface Comparador {
     public function comparar(int $a, int $b): bool;
 }`,
       python: `from abc import ABC, abstractmethod
@@ -236,7 +241,8 @@ class Comparador(ABC):
     id: '2c',
     enunciado: 'Define un contrato para transformar texto: recibe string, devuelve string.',
     code: {
-      php: `interface Transformador {
+      php: `<?php
+interface Transformador {
     public function transformar(string $texto): string;
 }`,
       python: `from abc import ABC, abstractmethod
@@ -267,7 +273,8 @@ class Transformador(ABC):
     enunciado:
       'Dos clases cumplen el mismo contrato: una suma 10, otra multiplica por 3. Pasa ambas a la misma funcion.',
     code: {
-      php: `interface Operacion {
+      php: `<?php
+interface Operacion {
     public function aplicar(int $n): int;
 }
 class Sumar10 implements Operacion {
@@ -367,7 +374,8 @@ Console.WriteLine(Ejecutar(new Multiplicar3(), 5));`,
     enunciado:
       'Dos clases comparan numeros: una verifica si a > b, otra si a == b. Usa la misma funcion para ambas.',
     code: {
-      php: `interface Comparador {
+      php: `<?php
+interface Comparador {
     public function comparar(int $a, int $b): bool;
 }
 class EsMayor implements Comparador {
@@ -467,7 +475,8 @@ Console.WriteLine(Verificar(new EsIgual(), 10, 3));`,
     enunciado:
       'Dos transformadores de texto: uno pone en mayusculas, otro cuenta las letras. Misma funcion los usa.',
     code: {
-      php: `interface Transformador {
+      php: `<?php
+interface Transformador {
     public function transformar(string $t): string;
 }
 class AMayusculas implements Transformador {
@@ -574,7 +583,8 @@ Console.WriteLine(Procesar(new ContarLetras(), "hola"));`,
     enunciado:
       'Un servicio recibe una operacion desde afuera y la aplica. El no decide cual operacion usar.',
     code: {
-      php: `interface Operacion {
+      php: `<?php
+interface Operacion {
     public function aplicar(int $n): int;
 }
 class Sumar10 implements Operacion {
@@ -667,7 +677,8 @@ Console.WriteLine(s.Ejecutar(5));`,
     enunciado:
       'Mismo servicio, pero ahora le inyectas Multiplicar3 en vez de Sumar10. Sin tocar el servicio.',
     code: {
-      php: `// Operacion y Servicio ya definidos arriba
+      php: `<?php
+// Operacion y Servicio ya definidos arriba
 class Multiplicar3 implements Operacion {
     public function aplicar(int $n): int {
         return $n * 3;
@@ -716,7 +727,8 @@ Console.WriteLine(s.Ejecutar(5));`,
     enunciado:
       'Crea un servicio que reciba un Comparador y diga si 10 es mayor que 3.',
     code: {
-      php: `interface Comparador {
+      php: `<?php
+interface Comparador {
     public function comparar(int $a, int $b): bool;
 }
 class EsMayor implements Comparador {

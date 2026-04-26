@@ -9,7 +9,8 @@ export const examples3 = [
     enunciado:
       'Guarda numeros en un diccionario con clave y recuperalos por clave.',
     code: {
-      php: `class Almacen {
+      php: `<?php
+class Almacen {
     private array $datos = [];
     public function guardar(int $clave, int $valor): void {
         $this->datos[$clave] = $valor;
@@ -93,7 +94,8 @@ Console.WriteLine(a.Obtener(2));`,
     enunciado:
       'Repositorio con interfaz: define guardar/obtener como contrato y crea una implementacion en memoria.',
     code: {
-      php: `interface Repositorio {
+      php: `<?php
+interface Repositorio {
     public function guardar(int $clave, int $valor): void;
     public function obtener(int $clave): int;
 }
@@ -184,7 +186,8 @@ Console.WriteLine(repo.Obtener(5));`,
     enunciado:
       'Verifica si una clave existe en el repositorio antes de obtenerla.',
     code: {
-      php: `class RepoSeguro {
+      php: `<?php
+class RepoSeguro {
     private array $datos = [];
     public function guardar(int $c, int $v): void {
         $this->datos[$c] = $v;
@@ -267,7 +270,8 @@ Console.WriteLine(r.Existe(99) ? "existe" : "no existe");`,
     enunciado:
       'Dos cajas con el mismo contenido (10, 20). Compara por identidad y por valor.',
     code: {
-      php: `class Caja {
+      php: `<?php
+class Caja {
     public function __construct(
         public int $id, public int $contenido
     ) {}
@@ -361,7 +365,8 @@ Console.WriteLine((p1.IgualA(p2) ? "mismo":"distinto") + " punto");`,
     section: 10, sectionTitle: 'ENTIDAD vs VALUE OBJECT', id: '10b',
     enunciado: 'Crea un Value Object "Moneda" con cantidad y tipo. Dos monedas iguales deben ser iguales.',
     code: {
-      php: `class Moneda {
+      php: `<?php
+class Moneda {
     public function __construct(
         public int $cantidad, public string $tipo
     ) {}
@@ -438,7 +443,8 @@ Console.WriteLine(m1.IgualA(m3) ? "iguales" : "distintas");`,
     section: 10, sectionTitle: 'ENTIDAD vs VALUE OBJECT', id: '10c',
     enunciado: 'Dos entidades con mismo nombre pero distinto id. Son diferentes.',
     code: {
-      php: `class Persona {
+      php: `<?php
+class Persona {
     public function __construct(
         public int $id, public string $nombre
     ) {}
@@ -498,7 +504,8 @@ Console.WriteLine(a.MismaQue(b) ? "misma" : "diferente");`,
     section: 11, sectionTitle: 'COMPOSICION (sobre herencia)', id: '11a',
     enunciado: 'Un Sumador usa un Multiplicador internamente: resultado = multiplicar(x) + x.',
     code: {
-      php: `class Multiplicador {
+      php: `<?php
+class Multiplicador {
     public function multiplicar(int $n, int $por): int {
         return $n * $por;
     }
@@ -571,7 +578,8 @@ Console.WriteLine(s.Calcular(5));`,
     section: 11, sectionTitle: 'COMPOSICION (sobre herencia)', id: '11b',
     enunciado: 'Un Motor calcula potencia. Un Auto tiene un Motor y lo usa para calcular velocidad.',
     code: {
-      php: `class Motor {
+      php: `<?php
+class Motor {
     public function potencia(int $rpm): int {
         return $rpm * 2;
     }
@@ -644,7 +652,8 @@ Console.WriteLine(auto.Velocidad(50));`,
     section: 11, sectionTitle: 'COMPOSICION (sobre herencia)', id: '11c',
     enunciado: 'Un Filtro usa un Evaluador. Si el numero pasa la evaluacion, lo devuelve; si no, devuelve 0.',
     code: {
-      php: `class Evaluador {
+      php: `<?php
+class Evaluador {
     public function esMayor(int $n, int $limite): bool {
         return $n > $limite;
     }
@@ -729,7 +738,8 @@ Console.WriteLine(f.Filtrar(3));`,
     section: 12, sectionTitle: 'HEXAGONO (Puerto y Adaptador)', id: '12a',
     enunciado: 'Dominio puro: aplica resultado = operacion(x) * 2. Sin saber que operacion es.',
     code: {
-      php: `interface Puerto {
+      php: `<?php
+interface Puerto {
     public function operar(int $x): int;
 }
 class Sumar100 implements Puerto {
@@ -814,7 +824,8 @@ Console.WriteLine(d.Calcular(5));`,
     section: 12, sectionTitle: 'HEXAGONO (Puerto y Adaptador)', id: '12b',
     enunciado: 'Cambia el adaptador a Multiplicar10 sin tocar el Dominio. El resultado cambia.',
     code: {
-      php: `class Multiplicar10 implements Puerto {
+      php: `<?php
+class Multiplicar10 implements Puerto {
     public function operar(int $x): int { return $x * 10; }
 }
 $d = new Dominio(new Multiplicar10());
@@ -851,7 +862,8 @@ Console.WriteLine(d.Calcular(5));`,
     section: 12, sectionTitle: 'HEXAGONO (Puerto y Adaptador)', id: '12c',
     enunciado: 'Hexagono completo: puerto, dos adaptadores, dominio con regla (op(a) + op(b)) / 2.',
     code: {
-      php: `interface Puerto {
+      php: `<?php
+interface Puerto {
     public function operar(int $x): int;
 }
 class Doble implements Puerto {

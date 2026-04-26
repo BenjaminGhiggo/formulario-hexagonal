@@ -9,7 +9,8 @@ export const examples2 = [
     enunciado:
       'Reemplaza Sumar10 por Multiplicar3 en el mismo Servicio. El servicio no se rompe.',
     code: {
-      php: `interface Operacion {
+      php: `<?php
+interface Operacion {
     public function aplicar(int $n): int;
 }
 class Sumar10 implements Operacion {
@@ -91,7 +92,8 @@ Console.WriteLine(new Servicio(new Multiplicar3()).Ejecutar(5));
     enunciado:
       'Tres comparadores distintos pasan por la misma funcion. Todos son intercambiables.',
     code: {
-      php: `interface Comparador {
+      php: `<?php
+interface Comparador {
     public function comparar(int $a, int $b): bool;
 }
 class Mayor implements Comparador {
@@ -174,7 +176,8 @@ Console.WriteLine(
     enunciado:
       'Dos formateadores de numeros (como texto y como doble) se usan en la misma funcion sin cambiarla.',
     code: {
-      php: `interface Formateador {
+      php: `<?php
+interface Formateador {
     public function formatear(int $n): string;
 }
 class ComoTexto implements Formateador {
@@ -277,7 +280,8 @@ Console.WriteLine(Mostrar(new ComoDoble(), 7));`,
     enunciado:
       'Tienes una calculadora vieja con calcular(a, b). Adaptala al contrato que solo recibe un numero.',
     code: {
-      php: `interface Operacion {
+      php: `<?php
+interface Operacion {
     public function aplicar(int $n): int;
 }
 class CalculadoraVieja {
@@ -367,7 +371,8 @@ Console.WriteLine(a.Aplicar(5));`,
     enunciado:
       'Una libreria devuelve el resultado como texto "42". Adaptala para que devuelva un entero.',
     code: {
-      php: `interface Operacion {
+      php: `<?php
+interface Operacion {
     public function aplicar(int $n): int;
 }
 class LibreriaTexto {
@@ -460,7 +465,8 @@ Console.WriteLine(a.Aplicar(7));`,
     enunciado:
       'Una funcion externa resta en orden inverso: resta(b, a). Adaptala para que reste en orden normal: a - b.',
     code: {
-      php: `interface Operacion {
+      php: `<?php
+interface Operacion {
     public function aplicar(int $n): int;
 }
 class RestaInversa {
@@ -552,7 +558,8 @@ Console.WriteLine(a.Aplicar(10));`,
     enunciado:
       'Construye una calculadora que no decide que operacion usa. Se la inyectan al crearla.',
     code: {
-      php: `interface Operacion {
+      php: `<?php
+interface Operacion {
     public function aplicar(int $n): int;
 }
 class Duplicar implements Operacion {
@@ -627,7 +634,8 @@ Console.WriteLine(calc.Calcular(8));`,
     enunciado:
       'Inyecta dos operaciones distintas a la misma calculadora (en momentos diferentes).',
     code: {
-      php: `class Triplicar implements Operacion {
+      php: `<?php
+class Triplicar implements Operacion {
     public function aplicar(int $n): int { return $n * 3; }
 }
 $c1 = new Calculadora(new Duplicar());
@@ -679,7 +687,8 @@ Console.WriteLine(c2.Calcular(4));`,
     enunciado:
       'Inyecta un Comparador a un Validador. El validador no sabe que comparacion hace.',
     code: {
-      php: `interface Comparador {
+      php: `<?php
+interface Comparador {
     public function comparar(int $a, int $b): bool;
 }
 class MayorQue implements Comparador {
@@ -772,7 +781,8 @@ Console.WriteLine(v.Validar(10, 2));`,
     enunciado:
       'Simula una operacion que siempre devuelve 99 sin importar que reciba.',
     code: {
-      php: `interface Operacion {
+      php: `<?php
+interface Operacion {
     public function aplicar(int $n): int;
 }
 class MockOperacion implements Operacion {
@@ -840,7 +850,8 @@ Console.WriteLine(s.Ejecutar(1234));`,
     enunciado:
       'Mock configurable: le dices que valor devolver antes de usarlo.',
     code: {
-      php: `class MockConfigurable implements Operacion {
+      php: `<?php
+class MockConfigurable implements Operacion {
     private int $retorno;
     public function configurar(int $valor): void {
         $this->retorno = $valor;
@@ -910,7 +921,8 @@ Console.WriteLine(s.Ejecutar(0));`,
     enunciado:
       'Mock que cuenta cuantas veces fue llamado (spy).',
     code: {
-      php: `class MockSpy implements Operacion {
+      php: `<?php
+class MockSpy implements Operacion {
     public int $llamadas = 0;
     public function aplicar(int $n): int {
         $this->llamadas++;
