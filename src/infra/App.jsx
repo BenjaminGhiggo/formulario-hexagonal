@@ -75,9 +75,13 @@ function Section({ data, sectionRef, lang }) {
   )
 }
 
+function isMobile() {
+  return window.innerWidth <= 768
+}
+
 function App() {
   const [activeId, setActiveId] = useState(1)
-  const [sidebarOpen, setSidebarOpen] = useState(true)
+  const [sidebarOpen, setSidebarOpen] = useState(() => !isMobile())
   const [lang, setLang] = useState('php')
   const sectionRefs = useRef({})
 
@@ -106,6 +110,7 @@ function App() {
     if (el) {
       el.scrollIntoView({ behavior: 'smooth', block: 'start' })
     }
+    if (isMobile()) setSidebarOpen(false)
   }
 
   return (
@@ -118,12 +123,18 @@ function App() {
         {sidebarOpen ? '\u2039' : '\u203A'}
       </button>
       {sidebarOpen && (
-        <Sidebar
-          activeId={activeId}
-          onNavigate={handleNavigate}
-          lang={lang}
-          onLangChange={setLang}
-        />
+        <>
+          <div
+            className="sidebar-overlay"
+            onClick={() => setSidebarOpen(false)}
+          />
+          <Sidebar
+            activeId={activeId}
+            onNavigate={handleNavigate}
+            lang={lang}
+            onLangChange={setLang}
+          />
+        </>
       )}
       <div className="app">
         <h1 className="app-title">Formulario de Requisitos para Arquitectura Hexagonal</h1>

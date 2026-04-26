@@ -97,13 +97,18 @@ function EjSidebar({ onNavigate, lang, onLangChange }) {
   )
 }
 
+function isMobile() {
+  return window.innerWidth <= 768
+}
+
 export default function Ejemplos() {
   const [lang, setLang] = useState('php')
-  const [sidebarOpen, setSidebarOpen] = useState(true)
+  const [sidebarOpen, setSidebarOpen] = useState(() => !isMobile())
 
   const handleNavigate = (num) => {
     const el = document.getElementById(`ej-section-${num}`)
     if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    if (isMobile()) setSidebarOpen(false)
   }
 
   return (
@@ -115,11 +120,17 @@ export default function Ejemplos() {
         {sidebarOpen ? '\u2039' : '\u203A'}
       </button>
       {sidebarOpen && (
-        <EjSidebar
-          onNavigate={handleNavigate}
-          lang={lang}
-          onLangChange={setLang}
-        />
+        <>
+          <div
+            className="sidebar-overlay"
+            onClick={() => setSidebarOpen(false)}
+          />
+          <EjSidebar
+            onNavigate={handleNavigate}
+            lang={lang}
+            onLangChange={setLang}
+          />
+        </>
       )}
       <div className="app">
         <h1 className="app-title">Ejemplos Practicos</h1>
