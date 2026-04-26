@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react'
-import { sections, LANGS, LANG_LABELS } from './sections'
+import { sections, LANGS, LANG_LABELS } from '../domain/sections'
 import { HighlightedCode, HighlightedFormula } from './highlight'
 import './App.css'
 

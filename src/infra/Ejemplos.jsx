@@ -1,9 +1,9 @@
 import { useState } from 'react'
-import { LANGS, LANG_LABELS } from './sections'
+import { LANGS, LANG_LABELS } from '../domain/sections'
 import { HighlightedCode } from './highlight'
-import { examples1 } from './examples-1'
-import { examples2 } from './examples-2'
-import { examples3 } from './examples-3'
+import { examples1 } from '../domain/examples-1'
+import { examples2 } from '../domain/examples-2'
+import { examples3 } from '../domain/examples-3'
 import './Ejemplos.css'
 
 const allExamples = [...examples1, ...examples2, ...examples3]

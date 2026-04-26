@@ -2,8 +2,8 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { BrowserRouter, Routes, Route, NavLink } from 'react-router-dom'
 import './index.css'
-import App from './App.jsx'
-import Ejemplos from './Ejemplos.jsx'
+import App from './infra/App.jsx'
+import Ejemplos from './infra/Ejemplos.jsx'
 
 function Header() {
   return (
