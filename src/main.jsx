@@ -12,6 +12,7 @@ import Algoritmos from './infra/Algoritmos.jsx'
 import Poo from './infra/Poo.jsx'
 import Sql from './infra/Sql.jsx'
 import Testing from './infra/Testing.jsx'
+import Ddd from './infra/Ddd.jsx'
 
 const pages = [
   { path: '/', label: 'Hexagonal' },
@@ -19,6 +20,7 @@ const pages = [
   { path: '/fundamentos', label: 'Fundamentos' },
   { path: '/poo', label: 'POO' },
   { path: '/solid', label: 'SOLID' },
+  { path: '/ddd', label: 'DDD' },
   { path: '/patrones', label: 'Patrones' },
   { path: '/estructuras', label: 'Estructuras' },
   { path: '/algoritmos', label: 'Algoritmos' },
@@ -55,6 +57,7 @@ createRoot(document.getElementById('root')).render(
         <Route path="/fundamentos" element={<Fundamentos />} />
         <Route path="/poo" element={<Poo />} />
         <Route path="/solid" element={<Solid />} />
+        <Route path="/ddd" element={<Ddd />} />
         <Route path="/patrones" element={<Patrones />} />
         <Route path="/estructuras" element={<Estructuras />} />
         <Route path="/algoritmos" element={<Algoritmos />} />
